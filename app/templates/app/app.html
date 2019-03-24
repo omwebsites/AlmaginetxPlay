@@ -1,41 +1,105 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AlmaginetxPlay</title>
+	<title>Luciferian Music Society</title>
 </head>
 <body>
-<section>
 
+<!-- ////////////////////////////////// app-homeForm-->
+<nav class="app-homeNav">
+	<img src="avatar.jpg">
+</nav>
+<style type="text/css">
+	nav{position:fixed;width:60px;top:0;left:0;z-index:10;padding:10px;}
+	nav img{display:block;width:50px;height:50px;background:#000;border-radius:50%;margin-bottom:10px;}
+</style>
+
+<!-- ////////////////////////////////// app-homeForm-->
+
+<section class="app-homeForm">
+	<h1>Luciferian Music Society</h1>
+	<h2>Become a member and enjoy exclusive audio.</h2>
+		<form>
+			<input placeholder="Email" type="email" name="">
+			<input placeholder="Password" type="password" name="">
+			<button>Login</button>
+		</form>
+		<div>
+		<h3>New members:</h3>
+		<img src="avatar01.jpg">
+		<img src="avatar02.jpg">
+		<img src="avatar03.jpg">
+		<img src="avatar04.jpg">
+		<img src="avatar05.jpg">
+		<img src="avatar06.jpg">
+		</div>
+</section>
+
+<style type="text/css">
+	.app-homeForm{width:30%;}
+	.app-homeForm{background:#000;padding:20px 30px 20px 0;}
+	.app-homeForm h1{padding:10px;color:#d2d2d2;background:#000;font-size:16px;}
+	.app-homeForm h2{font-size: 20px;text-align:left;color:#fff;padding:10px;}
+	.app-homeForm h3{font-size: 12px;text-align:left;color:#fff;padding:10px;}
+	.app-homeForm form{padding:20px;text-align:center;background:#000;width:100%;}
+	.app-homeForm input{padding: 10px;background:#fff;border:none;border-radius:5px;margin:3px auto;display:block;}
+	.app-homeForm button{background:#333;border:none;border-radius:30px;padding:10px;color:#fff;text-align:center;margin:5px;}
+	.app-homeForm img{width:120px;height:120px;display:inline-block;vertical-align:top;margin:5px;border-radius:50%;}
+	.app-homeForm div{text-align:center;}
+
+</style>
+<style type="text/css">@media screen and (max-width:1000px){
+	input{width: 100%;}
+}</style>
+
+<!-- ////////////////////////////////// app-homeList-->
+<section class="app-homeList">
 	<header>
-		<figure onclick="load()"></figure>
+		<div>
+		<figure onclick="load()">
+			<img src="avatar.jpg">
+		</figure>
+		</div>
 	</header>
 
 	<article>
-		<a href=""><img src=""></a>
+		<a href=""><img src="avatar.jpg"></a>
 		<p><strong>Tilo Wolf:</strong> "The morgen danatch from the new album Lichgestalt 2019 release"</p>
 		<button></button>
 	</article>
 
 		<article>
-		<a href=""><img src=""></a>
+		<a href=""><img src="avatar.jpg"></a>
 		<p><strong>Tilo Wolf:</strong> "The morgen danatch from the new album Lichgestalt 2019 release"</p>
 		<button></button>
 	</article>
 
-		<article>
-		<a href=""><img src=""></a>
+	<article>
+		<a href=""><img src="avatar.jpg"></a>
 		<p><strong>Tilo Wolf:</strong> "The morgen danatch from the new album Lichgestalt 2019 release"</p>
 		<button></button>
 	</article>
 
-		<article>
-		<a href=""><img src=""></a>
+	<article>
+		<a href=""><img src="avatar.jpg"></a>
 		<p><strong>Tilo Wolf:</strong> "The morgen danatch from the new album Lichgestalt 2019 release"</p>
 		<button></button>
 	</article>
 
-		<article>
-		<a href=""><img src=""></a>
+	<article>
+		<a href=""><img src="avatar.jpg"></a>
+		<p><strong>Tilo Wolf:</strong> "The morgen danatch from the new album Lichgestalt 2019 release"</p>
+		<button></button>
+	</article>
+
+	<article>
+		<a href=""><img src="avatar.jpg"></a>
+		<p><strong>Tilo Wolf:</strong> "The morgen danatch from the new album Lichgestalt 2019 release"</p>
+		<button></button>
+	</article>
+
+	<article>
+		<a href=""><img src="avatar.jpg"></a>
 		<p><strong>Tilo Wolf:</strong> "The morgen danatch from the new album Lichgestalt 2019 release"</p>
 		<button></button>
 	</article>
@@ -44,18 +108,35 @@
 </body>
 
 <style type="text/css">
-	body{background:#04141d;padding-left:60px;width: 500px;}
+	*{margin: 0;padding: 0;text-decoration: none;list-style: none;font-family: 'Roboto', sans-serif;-webkit-transition: All 0.2s ease;-moz-transition: All 0.2s ease;-o-transition: All 0.2s ease;-ms-transition: All 0.2s ease;transition: All 0.2s ease;box-sizing:border-box;-o-box-sizing:border-box;-ms-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+	body{background:#000;padding-left:60px;}
+	section{background:#0f0f0f;display:inline-block;vertical-align:top;width:49%;}
 
-	section{background:#000;}
+.app-homeList {width: 69%}
 
-	header{position:relative;background:red;margin-bottom:100px;height:200px;text-align:center;}
-	figure{display:inline-block;position:absolute;background:yellow;bottom:-80px;height:160px;width:160px;border-radius:50%;margin:0 auto;}
+	.app-homeList header{position:relative;background:url(banner.jpg)no-repeat center center;background-size:cover;background-attachment:fixed;margin-bottom:130px;height:200px;text-align:center;}
+		.app-homeList div{height: 100%;display:block;width:220px;margin: 0 auto;}
+		.app-homeList figure{background:rgba(119,119,119,0.1);no-repeat center center;background-size:100%;height:220px;width:220px;border-radius:50%;position:absolute;bottom:-115px;padding-top:25px}
+		.app-homeList figure img{border-radius:50%;width:160px;height:160px;}
 
-	article{left:-60px;position:relative;background:rgba(255,255,255,0.0);padding:10px;}
-	img{position:absolute;left:10px;display:inline-block;width:70px;height:70px;background:blue;border-radius:50%;}
-	p{padding-left: 100px;padding-right:100px;display:inline-block;color:#fff;}
-	button{display:inline-block;position:absolute;right:10px;width:70px;height:70px;background:red;border:none;border-radius:10px;}
+	.app-homeList article{position:relative;background:rgba(0,0,0,0.6);padding:10px;margin:2px;}
+		.app-homeList article img{position:absolute;left:-35px;display:inline-block;width:70px;height:70px;border-radius:50%;}
+		.app-homeList p{padding-left:35px;padding-right:75px;display:inline-block;color:#fff;height:70px;overflow:hidden;font-size:14px;}
+		.app-homeList button{display:inline-block;position:absolute;right:10px;width:70px;height:70px;background:#d7d7d7 url(icon.png) no-repeat center center;background-size:60px;border:none;border-radius:5px;opacity:0.8;}
+		.app-homeList button:hover{opacity:1;}
+</style>
+<style type="text/css">@media screen and (max-width:1000px){
+	section{background:#0f0f0f;display:block;width:100%!important;}
+}</style>
 
-
+<!-- ////////////////////////////////// app-homeFooter-->
+<footer>
+	<a href="">Free subscription</a>
+	<a href="">Premium Subscription</a>
+</footer>
+<style type="text/css">
+	footer{padding: 20px;background:#0f0f0f;}
+	footer a{color:gold;padding:10px;display:block;font-size:12px;}
+	footer img{margin:0;auto;width:100px;height:100px;}
 </style>
 </html>
