@@ -87,7 +87,11 @@
 		<h3>New members:</h3>
 		{%for userprofile in userprofile%}
 		<article>
-		<a href="{% url 'app.userprofile' userprofile.slug%}"><img src="/static/img/avatar.png" alt="User: {{userprofile.nickname}}."></a>
+		<a href="{% url 'app.userprofile' userprofile.slug%}">{%if userprofile.avatar%}
+			<img src="/media/{{userprofile.avatar}}" alt="User: {{userprofile.nickname}}.">
+			{%else%}
+			<img src="/static/img/avatar.png" alt="User: {{userprofile.nickname}}.">
+			{%endif%}</a>
 		<h4>{{userprofile.nickname}}</h4>
 		</article>
 		{%endfor%}
@@ -127,7 +131,11 @@
 	</article>
 	{%for track in track%}
 	<article>
-		<a href="{% url 'app.userprofile' track.user.userprofile.slug%}"><img src="/static/img/profile.png" alt="Listen Audio"></a>
+		<a href="{% url 'app.userprofile' track.user.userprofile.slug%}">{%if userprofile.avatar%}
+			<img src="/media/{{track.user.userprofile.avatar}}" alt="User: {{track.user.userprofile.nickname}}.">
+			{%else%}
+			<img src="/static/img/avatar.png" alt="User: {{track.user.userprofile.nickname}}.">
+			{%endif%}</a>
 		<p><strong>{{track.user.userprofile.nickname}}:</strong> "{{track.title}}" <span> {{track.create_at|timesince}} ago</span></p>
 		<a href="{% url 'app.track' track.slug%}"><button></button></a>
 	</article>

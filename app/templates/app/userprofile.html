@@ -51,7 +51,11 @@
 	<header>
 		<div>
 		<figure onclick="load()">
-			<img src="/static/img/avatar.png">
+			{%if userprofile.avatar%}
+			<img src="/media/{{userprofile.avatar}}" alt="User: {{userprofile.nickname}}.">
+			{%else%}
+			<img src="/static/img/avatar.png" alt="User: {{userprofile.nickname}}.">
+			{%endif%}
 		</figure>
 		</div>
 	</header>

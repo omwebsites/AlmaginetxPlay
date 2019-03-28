@@ -21,7 +21,11 @@
 	<h3>{{track.create_at|timesince}} ago</h3>
 	<div>
 	<article>
-		<a href="{% url 'app.userprofile' track.user.userprofile.slug%}"><img src="/static/img/avatar.png" alt="User: {{track.user.userprofile.nickname}}."></a>
+		<a href="{% url 'app.userprofile' track.user.userprofile.slug%}">{%if track.user.userprofile.avatar%}
+			<img src="/media/{{track.user.userprofile.avatar}}" alt="User: {{track.user.userprofile.nickname}}.">
+			{%else%}
+			<img src="/static/img/avatar.png" alt="User: {{userprofile.nickname}}.">
+			{%endif%}</a>
 		<h4>Uploaded by: {{track.user.userprofile.nickname}}<br> (Luciferian Music Society Member since {{track.user.userprofile.create_at|date:"Y"}})</h4>
 		<h4>{{track.create_at}}</h4>
 	</article>
