@@ -20,21 +20,12 @@
 <!-- ////////////////////////////////// app-homeForm-->
 
 <section class="app-homeForm">
-	<h1>{{user.userprofile.nickname}}</h1>
+	<h1>Luciferian Music Society Member:</h1>
 	{% if message %}<h2>{{ message }}</h2>
-	{%else%}
-	<h2>Welcome {{user.userprofile.nickname}}. You are a Luciferian Music Society Member.</h2>{% endif %}
-	<li><a href="{%url 'app.uploadtrack'%}">Upload new audio</a></li>
-		<div>
-		<h3>New members:</h3>
-		{%for userprofile in userprofile%}
-		<article>
-		<a href="{% url 'app.userprofile' userprofile.slug%}">
-		<img src="/static/img/avatar.png" alt="User: {{userprofile.nickname}}."></a>
-		<h4>{{userprofile.nickname}}</h4>
-		</article>
-		{%endfor%}
-		</div>
+	{%endif%}
+	<h2>{{userprofile.nickname}}</h2>
+	<h3>Joined: {{userprofile.create_at|date:"Y"}}</h3>
+	
 </section>
 
 <style type="text/css">
@@ -43,8 +34,8 @@
 	.app-homeForm h1{padding:10px;color:#d2d2d2;background:#000;font-size:16px;}
 	.app-homeForm h2{font-size: 20px;text-align:left;color:#fff;padding:10px;}
 	.app-homeForm h3{font-size: 12px;text-align:left;color:#fff;padding:10px;}
-	.app-homeForm li a{display:block;padding:20px;padding-left:60px;background:#f6c434 url(/static/img/icon.png) no-repeat left 5px center;background-size:50px;color:#000;border-radius:5px;opacity:0.8;font-weight:bold;}
-	.app-homeForm li a:hover{opacity:1;}
+	.app-homeForm a{display:block;padding:20px;padding-left:60px;background:#f6c434 url(/static/img/icon.png) no-repeat left 5px center;background-size:50px;color:#000;border-radius:5px;opacity:0.8;font-weight:bold;}
+	.app-homeForm a:hover{opacity:1;}
 	.app-homeForm img{width:120px;height:120px;display:inline-block;vertical-align:top;margin:5px;border-radius:50%;}
 	.app-homeForm div{text-align:center;}
 	.app-homeForm article{display:inline-block;vertical-align:top;text-align:center;}
@@ -60,21 +51,19 @@
 	<header>
 		<div>
 		<figure onclick="load()">
-			{%if user.userprofile.avatar%}
-			<img src="/media/{{user.userprofile.avatar}}">
-			{%else%}
 			<img src="/static/img/avatar.png">
-			{%endif%}
 		</figure>
 		</div>
 	</header>
 
 	{%for track in track%}
+	{%if track.user.userprofile.id == userprofile.id%}
 	<article>
-		<a href="{% url 'app.userprofile' track.user.userprofile.slug%}"><img src="/static/img/avatar.png" alt="Listen Audio"></a>
+		<a href=""><img src="/static/img/avatar.png" alt="Listen Audio"></a>
 		<p><strong>{{track.user.userprofile.nickname}}:</strong> "{{track.title}}" <span> {{track.create_at|timesince}} ago</span></p>
 		<a href="{% url 'app.track' track.slug%}"><button></button></a>
 	</article>
+	{%endif%}
 	{%endfor%}
 
 </section>
@@ -101,19 +90,6 @@
 <style type="text/css">@media screen and (max-width:1000px){
 	section{background:#0f0f0f;display:block;width:100%!important;}
 }</style>
-
-<!-- ////////////////////////////////// app-homeFooter-->
-<footer>
-	<a href="{%url 'app.signup'%}">Welcome {{ user.userprofile.nickname }}</a>
-	<a href="{%url 'app.uploadtrack'%}">Upload a new Audio</a>
-	<a href="{%url 'app.updateavatar' user.userprofile.slug%}">Update your member picture</a>
-	<a href="{%url 'app.logout'%}">Logout</a>
-</footer>
-<style type="text/css">
-	footer{padding: 20px;background:#0f0f0f;}
-	footer a{color:gold;padding:10px;display:block;font-size:12px;}
-	footer img{margin:0;auto;width:100px;height:100px;}
-</style>
 
 </body>
 </html>

@@ -2,6 +2,7 @@
 # -*- encoding: utf-8 -*-
 from django import forms
 from django.contrib.auth.models import User
+from .models import UserProfile, Track
 
 class signup_form(forms.Form):
     username = forms.EmailField(
@@ -9,7 +10,7 @@ class signup_form(forms.Form):
         min_length=1,
         widget=forms.EmailInput(attrs={'class': 'form-control'}))
     nickname = forms.CharField(
-        label='Nickname',
+        label='Alias',
         min_length=1,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(
@@ -26,9 +27,27 @@ class signup_form(forms.Form):
         if User.objects.filter(username=username):
             raise forms.ValidationError('Email already exist')
         return username
-    def clean_email(self):
+    def clean_nickname(self):
         """Comprueba que no exista un email igual en la db"""
         nickname = self.cleaned_data['nickname']
-        if User.objects.filter(nickname=nickname):
+        if UserProfile.objects.filter(nickname=nickname):
             raise forms.ValidationError('Nickname already exist')
         return nickname
+    def clean_password2(self):
+        """Comprueba que password y password2 sean iguales."""
+        password = self.cleaned_data['password']
+        password2 = self.cleaned_data['password2']
+        if password != password2:
+            raise forms.ValidationError('Make sure your password match')
+        return password2
+
+class uploadtrack_form(forms.Form):
+    title = forms.CharField(
+        label='Audio title',
+        widget=forms.Textarea(attrs={'class': 'form-control'}))
+    audio = forms.FileField(
+        label='Audio')
+
+class updateavatar_form(forms.Form):
+    audio = forms.FileField(
+        label='Picture')

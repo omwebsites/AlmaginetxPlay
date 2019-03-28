@@ -20,11 +20,41 @@ class UserProfile(models.Model):
         verbose_name = 'Userprofile'
         verbose_name_plural = 'Userprofiles'
     def __str__(self):
-        return self.user.username
-    def extension_class(self):
-        nickname, extension = os.path.splitext(self.archive.nickname)
-        return extension
+        return self.nickname
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.user.username)
+            self.slug = slugify(self.nickname)
         super(UserProfile, self).save(*args, **kwargs)
+
+#Tracks
+
+class Track(models.Model):
+    title = models.TextField(blank=True, verbose_name="title")
+    audio = models.FileField(upload_to='tracks/audio', blank=True, null=True)
+    user = models.ForeignKey(User, related_name='track_user', blank=True, null=True)
+    create_at = models.DateTimeField(default=now, editable=False)
+    update_at = models.DateTimeField(auto_now_add = False, auto_now=True, editable=False)
+    slug = models.SlugField(editable=False,max_length=144)
+
+    def get_absolute_url(self):
+        return reverse('blog.track', kwargs={'slug': self.slug})
+
+    def extension_class(self):
+        name, extension = os.path.splitext(self.audio.name)
+        return extension
+
+    class Meta:
+            ordering = ['create_at']
+            verbose_name = 'Track'
+            verbose_name_plural = 'Tracks'
+
+    def __unicode__(self):
+        return self.title
+
+    def save(self):
+        super(Track, self).save()
+        date = self.create_at
+        self.slug = '%i-%i-%i-audio-%i' % (
+            date.year, date.month, date.day, self.id
+        )
+        super(Track, self).save()

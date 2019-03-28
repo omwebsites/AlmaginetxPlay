@@ -9,33 +9,40 @@
 <body>
 <!-- ////////////////////////////////// app-homeForm-->
 <section class="app-homeForm">
-	<h2>Join to Luciferian Music Society</h2>
-	{% if message %}<div><h3>{{ message }}</h3></div>{% endif %}
-            <form method="post" action="" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-			<button type="submit">Signup</button>
-            </form>
+	{%if track.audio%}
+	<audio controls autoplay>
+    <source src="/media/{{track.audio}}" type="audio/mpeg">
+    Your browser does not support the audio element.
+	</audio>
+	{%endif%}
+	{%if track.title%}
+	<h2>{{track.title}}</h2>
+	{%endif%}
+	<h3>{{track.create_at|timesince}} ago</h3>
+	<div>
+	<article>
+		<a href="{% url 'app.userprofile' track.user.userprofile.slug%}"><img src="/static/img/avatar.png" alt="User: {{track.user.userprofile.nickname}}."></a>
+		<h4>Uploaded by: {{track.user.userprofile.nickname}}<br> (Luciferian Music Society Member since {{track.user.userprofile.create_at|date:"Y"}})</h4>
+		<h4>{{track.create_at}}</h4>
+	</article>
+	</div>
 </section>
 
 <style type="text/css">
 *{margin: 0;padding: 0;text-decoration: none;list-style: none;font-family: 'Roboto', sans-serif;-webkit-transition: All 0.2s ease;-moz-transition: All 0.2s ease;-o-transition: All 0.2s ease;-ms-transition: All 0.2s ease;transition: All 0.2s ease;box-sizing:border-box;-o-box-sizing:border-box;-ms-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
-body{background:#000 url(/static/img/banner.jpg)no-repeat center center;background-size:auto 100%;}
+body{background:#000;}
 	.app-homeForm{width:100%;}
+	.app-homeForm audio{width:100%;}
 	.app-homeForm{background:rgba(0,0,0,0.5);padding:20px;}
 	.app-homeForm h2{font-size: 20px;text-align:center;color:#fff;padding:10px;}
 	.app-homeForm h3{font-size: 12px;text-align:center;color:#fff;padding:10px;}
-	.app-homeForm form{padding:20px;text-align:center;width:100%;}
-	.app-homeForm input{padding: 10px;background:#fff;border:none;border-radius:5px;margin:3px auto;display:block;}
-	.app-homeForm label{color:#fff;}
-	.app-homeForm button{background:#333;border:none;border-radius:30px;padding:10px;color:#fff;text-align:center;margin:5px;}
+	.app-homeForm h4{font-size: 12px;text-align:center;color:#fff;padding:10px;}
 	.app-homeForm img{width:120px;height:120px;display:inline-block;vertical-align:top;margin:5px;border-radius:50%;}
 	.app-homeForm div{text-align:center;}
 	.app-homeForm li{padding:20px;background:red;}
-
 </style>
 <style type="text/css">@media screen and (max-width:1000px){
-	input{width: 100%;}
-}</style>
 
+}</style>
+</body>
 </html>

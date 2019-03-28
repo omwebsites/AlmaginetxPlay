@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Luciferian Music Society</title>
+	<title>Luciferian Music</title>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -10,44 +10,93 @@
 
 <!-- ////////////////////////////////// app-homeNav-->
 <nav class="app-homeNavs">
-	<img src="/static/img/avatar.jpg" alt="{{now|date:"l"}} {{now|date:"d"}} de {{now|date:"F"}} de {{now|date:"Y"}}. {{now|date:"P"}}">
+	<img src="/static/img/avatar.png" alt="{{now|date:"l"}} {{now|date:"d"}} de {{now|date:"F"}} de {{now|date:"Y"}}. {{now|date:"P"}}">
 </nav>
 <style type="text/css">
 	nav{position:fixed;width:60px;top:0;left:0;z-index:10;padding:10px;}
 	nav img{display:block;width:50px;height:50px;background:#000;border-radius:50%;margin-bottom:10px;}
 </style>
 
-<!-- ////////////////////////////////// app-homeForm-->
-
-<section class="app-homeForm">
-	<h1>Luciferian Music Society</h1>
-	<h2>Welcome. Become a member and enjoy exclusive audio.</h2>
-	<a href="{%url 'app.signup'%}">Create new account</a>
-		<form method="post" action="">
-        {% csrf_token %}
-        	{% if message %}<div><h3>{{ message }}</h3></div>
-	{%else%}<div><h3>Already have an account? Login:</h3></div>{% endif %}
+<!-- ////////////////////////////////// app-loginNav-->
+<div class="app-loginNav">
+	<h1>Luciferian Music</h1>
+	<aside>
+	<form method="post" action="">
+        	{% csrf_token %}
+        	{% if message %}<span>{{ message }}</span>{% endif %}
 	        <label for="username">Email</label>
 			<input placeholder="Email" type="email" id="username" name="username" value="{{ username }}">
 			<label for="password">Password</label>
 			<input placeholder="Password" type="password" id="password" name="password">
 			<button type="submit">Login</button>
 		</form>
+	</aside>
+</div>
+<style type="text/css">
+	body{padding-top: 68px;}
+	.app-loginNav{background:#000;position: fixed;top:0;left:0;z-index:9;width:100%;height:68px;padding:10px;padding-left: 60px;text-align:left;}
+	.app-loginNav p{color:#fff;display:inline-block;vertical-align: middle;}
+	.app-loginNav label{display:none;}
+	.app-loginNav input{width: 120px;height:30px;border:none;border-radius:30px;padding:5px;font-size:12px;margin:1px;}
+	.app-loginNav input:focus{width: 160px;}
+	.app-loginNav span{color:red;font-size:12px;}
+	.app-loginNav div{display:inline-block;vertical-align:middle;}
+	.app-loginNav h1{display:inline-block;vertical-align:middle;padding:14px;color:#d2d2d2;background:#000;font-size:16px;}
+	.app-loginNav aside{display:inline-block;vertical-align:middle;}
+	.app-loginNav button{background:#333;border:none;border-radius:30px;padding:10px 20px;color:#fff;text-align:center;margin-left:5px;font-size:12px;}
+
+@media screen and (max-width:1000px){
+	body{padding-top:0;}
+	.app-loginNav{position:relative;height:auto;padding-left:5px;}
+}
+</style>
+
+<!-- ////////////////////////////////// app-homeHeader-->
+
+<section class="app-header">
+	<header>
+	<br><br>
+	<section>
+	<h2>Welcome to The Luciferian Music Society. Become a member and enjoy exclusive audio.</h2>
+	<a href="{%url 'app.signup'%}">Create Account</a>
+	</section>
+		<div>
+		<figure onclick="load()">
+			<img src="/static/img/avatar.png" alt="Explore Last Music">
+		</figure>
+		</div>
+	</header>
+</section>
+<style type="text/css">
+	.app-header{width:100%;}
+		.app-header header{position:relative;background:url(/static/img/applogin.jpg)no-repeat top right;background-size:cover;background-attachment:fixed;margin-bottom:130px;height:500px;text-align:center;}
+		.app-header div{height: 100%;display:block;width:220px;margin: 0 auto;}
+		.app-header figure{background:rgba(119,119,119,0.1);no-repeat center center;background-size:100%;height:220px;width:220px;border-radius:50%;position:absolute;bottom:-115px;padding-top:25px}
+		.app-header figure img{border-radius:50%;width:160px;height:160px;}
+		.app-header section {background:rgba(0,0,0,0.8);padding:20px;text-align: center;}
+		.app-header section h2{font-size:20px;text-align:center;color:#fff;padding:10px;background:#000;}
+		.app-header section a{display:block;padding:20px;padding-left:60px;background:#f6c434 url(/static/img/icon.png) no-repeat left 5px center;background-size:50px;color:#000;border-radius:5px;opacity:0.8;font-weight:bold;}
+</style>
+
+<!-- ////////////////////////////////// app-homeForm-->
+
+<section class="app-homeForm">
+	<h2>Members can upload new audio tracks and get access to exclusive content.</h2>
+	<a href="{%url 'app.signup'%}">Upload new audio</a>
 		<div>
 		<h3>New members:</h3>
 		{%for userprofile in userprofile%}
 		<article>
-		<img src="/static/img/avatar.jpg" alt="User: {{userprofile.nickname}}.">
+		<a href="{% url 'app.userprofile' userprofile.slug%}"><img src="/static/img/avatar.png" alt="User: {{userprofile.nickname}}."></a>
 		<h4>{{userprofile.nickname}}</h4>
-		{%endfor%}
 		</article>
+		{%endfor%}
 		</div>
 </section>
 
 <style type="text/css">
 	.app-homeForm{width:30%;}
-	.app-homeForm{background:rgba(119,119,119,0.1);padding:20px 30px 20px 0;}
-	.app-homeForm h1{padding:10px;color:#d2d2d2;background:#000;font-size:16px;}
+	.app-homeForm{background:#000;padding:20px 30px 20px 0;}
 	.app-homeForm h2{font-size:20px;text-align:left;color:#fff;padding:10px;}
 	.app-homeForm h3{font-size:12px;text-align:left;color:#fff;padding:10px;}
 	.app-homeForm a{opacity:0.8;margin:10px;display: block;padding:10px;color:#fff;background:#333;border-radius:30px;text-align:center;}
@@ -59,7 +108,9 @@
 	.app-homeForm img{width:120px;height:120px;display:inline-block;vertical-align:top;margin:5px;border-radius:50%;}
 	.app-homeForm div{text-align:center;}
 	.app-homeForm article{display:inline-block;vertical-align:top;text-align:center;}
-	.app-homeForm article h4{margin-bottom:5px;color:#fff;display:block;width:130px;height:28px;overflow:hidden;font-size:12px;text-align:center;}
+	.app-homeList span{font-size:10px;}
+	.app-homeForm article h4{margin-bottom:5px;color:#fff;display:block;height:28px;overflow:hidden;font-size:12px;text-align:center;}
+	.app-homeForm li{padding:20px;background:red;}
 
 </style>
 <style type="text/css">@media screen and (max-width:1000px){
@@ -68,40 +119,35 @@
 
 <!-- ////////////////////////////////// app-homeList-->
 <section class="app-homeList">
-	<header>
-		<div>
-		<figure onclick="load()">
-			<img src="/static/img/avatar.jpg" alt="Explore Last Music">
-		</figure>
-		</div>
-	</header>
 
 	<article>
-		<a href=""><img src="/static/img/avatar.jpg" alt="Listen Audio"></a>
+		<a href="{%url 'app.signup'%}"><img src="/static/img/avatar.png" alt="Listen Audio"></a>
 		<p><strong>Luciferian Music Society:</strong> "Welcome to Luciferian Music Society. Become a member and upload your first audio. Enjoy new tracks every day from people around the world"</p>
-		<button></button>
+		<a href="{%url 'app.signup'%}"><button></button></a>
 	</article>
+	{%for track in track%}
+	<article>
+		<a href="{% url 'app.userprofile' track.user.userprofile.slug%}"><img src="/static/img/profile.png" alt="Listen Audio"></a>
+		<p><strong>{{track.user.userprofile.nickname}}:</strong> "{{track.title}}" <span> {{track.create_at|timesince}} ago</span></p>
+		<a href="{% url 'app.track' track.slug%}"><button></button></a>
+	</article>
+	{%endfor%}
 
 </section>
-</body>
 
 <style type="text/css">
 	*{margin: 0;padding: 0;text-decoration: none;list-style: none;font-family: 'Roboto', sans-serif;-webkit-transition: All 0.2s ease;-moz-transition: All 0.2s ease;-o-transition: All 0.2s ease;-ms-transition: All 0.2s ease;transition: All 0.2s ease;box-sizing:border-box;-o-box-sizing:border-box;-ms-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
 	body{background:#000;padding-left:60px;}
-	section{background:#0f0f0f;display:inline-block;vertical-align:top;width:49%;}
+	section{background:#080808;display:inline-block;vertical-align:top;width:49%;}
 
 .app-homeList {width: 69%}
 
-	.app-homeList header{position:relative;background:url(/static/img/banner.jpg)no-repeat center center;background-size:cover;background-attachment:fixed;margin-bottom:130px;height:200px;text-align:center;}
-		.app-homeList div{height: 100%;display:block;width:220px;margin: 0 auto;}
-		.app-homeList figure{background:rgba(119,119,119,0.1);no-repeat center center;background-size:100%;height:220px;width:220px;border-radius:50%;position:absolute;bottom:-115px;padding-top:25px}
-		.app-homeList figure img{border-radius:50%;width:160px;height:160px;}
-
 	.app-homeList article{position:relative;background:rgba(0,0,0,0.6);padding:10px;margin:2px;}
-		.app-homeList article img{position:absolute;left:-35px;display:inline-block;width:70px;height:70px;border-radius:50%;}
-		.app-homeList p{padding-left:35px;padding-right:75px;display:inline-block;color:#fff;height:70px;overflow:hidden;font-size:14px;}
-		.app-homeList button{display:inline-block;position:absolute;right:10px;width:70px;height:70px;background:#d7d7d7 url(/static/img/icon.png) no-repeat center center;background-size:60px;border:none;border-radius:5px;opacity:0.8;}
-		.app-homeList button:hover{opacity:1;}
+		.app-homeList article img{position:absolute;left:-35px;display:inline-block;width:70px;height:70px;border-radius:50%;background:#333;}
+		.app-homeList span{font-size:10px;}
+		.app-homeList p{padding-left:30px;padding-right:70px;display:inline-block;color:#fff;height:70px;overflow:hidden;font-size:14px;}
+		.app-homeList button{display:inline-block;position:absolute;right:10px;width:70px;height:70px;background:#4b4b4b url(/static/img/play.png) no-repeat center center;background-size:40px;border:none;border-radius:5px;opacity:0.8;}
+		.app-homeList button:hover{opacity:1;cursor:pointer;}
 </style>
 <style type="text/css">@media screen and (max-width:1000px){
 	section{background:#0f0f0f;display:block;width:100%!important;}
@@ -109,10 +155,6 @@
 
 <!-- ////////////////////////////////// app-homeFooter-->
 <footer>
-	{% if user.is_authenticated %}
-	<a href="{%url 'app.signup'%}">Welcome {{ username }}</a>
-	<a href="{%url 'app.logout'%}">Logout</a>
-	{%endif%}
 	<a href="{%url 'app.login'%}">Home</a>
 	<a href="{%url 'app.signup'%}">Signup</a>
 </footer>
@@ -121,4 +163,6 @@
 	footer a{color:gold;padding:10px;display:block;font-size:12px;}
 	footer img{margin:0;auto;width:100px;height:100px;}
 </style>
+
+</body>
 </html>
