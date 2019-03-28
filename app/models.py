@@ -15,7 +15,7 @@ class UserProfile(models.Model):
     avatar = models.ImageField(upload_to='userprofiles/avatar', blank=True, null=True)
     create_at = models.DateTimeField(default=now, editable=False)
     update_at = models.DateTimeField(auto_now_add = False, auto_now=True, editable=False)
-    slug = models.SlugField(editable=False)
+    slug = models.SlugField(editable=True)
     class Meta:
         verbose_name = 'Userprofile'
         verbose_name_plural = 'Userprofiles'
