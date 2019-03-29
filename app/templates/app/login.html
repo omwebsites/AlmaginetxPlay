@@ -29,6 +29,7 @@
 			<label for="password">Password</label>
 			<input placeholder="Password" type="password" id="password" name="password">
 			<button type="submit">Login</button>
+			<a href="{%url 'app.signup'%}">Signup</a>
 		</form>
 	</aside>
 </div>
@@ -44,6 +45,7 @@
 	.app-loginNav h1{display:inline-block;vertical-align:middle;padding:14px;color:#d2d2d2;background:#000;font-size:16px;}
 	.app-loginNav aside{display:inline-block;vertical-align:middle;}
 	.app-loginNav button{background:#333;border:none;border-radius:30px;padding:10px 20px;color:#fff;text-align:center;margin-left:5px;font-size:12px;}
+	.app-loginNav a{color:gold;padding-left:10px;font-size:14px;}
 
 @media screen and (max-width:1000px){
 	body{padding-top:0;}
@@ -73,7 +75,7 @@
 		.app-header div{height: 100%;display:block;width:220px;margin: 0 auto;}
 		.app-header figure{background:rgba(119,119,119,0.1);no-repeat center center;background-size:100%;height:220px;width:220px;border-radius:50%;position:absolute;bottom:-115px;padding-top:25px}
 		.app-header figure img{border-radius:50%;width:160px;height:160px;}
-		.app-header section {background:rgba(0,0,0,0.8);padding:20px;text-align: center;}
+		.app-header section {background:rgba(0,0,0,1);padding:20px;text-align: center;}
 		.app-header section h2{font-size:20px;text-align:center;color:#fff;padding:10px;background:#000;}
 		.app-header section a{display:block;padding:20px;padding-left:60px;background:#f6c434 url(/static/img/icon.png) no-repeat left 5px center;background-size:50px;color:#000;border-radius:5px;opacity:0.8;font-weight:bold;}
 </style>
@@ -103,7 +105,7 @@
 	.app-homeForm{background:#000;padding:20px 30px 20px 0;}
 	.app-homeForm h2{font-size:20px;text-align:left;color:#fff;padding:10px;}
 	.app-homeForm h3{font-size:12px;text-align:left;color:#fff;padding:10px;}
-	.app-homeForm a{opacity:0.8;margin:10px;display: block;padding:10px;color:#fff;background:#333;border-radius:30px;text-align:center;}
+	.app-homeForm a{opacity:0.8;margin:10px;display: block;padding:10px;color:#fff;background:#0b0a0a;border-radius:30px;text-align:center;}
 	.app-homeForm a:hover{opacity:1;}
 	.app-homeForm form{margin-top:10px;padding:20px;text-align:center;background:#000;width:100%;}
 	.app-homeForm label{font-size:0px;display:none;}
@@ -131,7 +133,7 @@
 	</article>
 	{%for track in track%}
 	<article>
-		<a href="{% url 'app.userprofile' track.user.userprofile.slug%}">{%if userprofile.avatar%}
+		<a href="{% url 'app.userprofile' track.user.userprofile.slug%}">{%if track.user.userprofile.avatar%}
 			<img src="/media/{{track.user.userprofile.avatar}}" alt="User: {{track.user.userprofile.nickname}}.">
 			{%else%}
 			<img src="/static/img/avatar.png" alt="User: {{track.user.userprofile.nickname}}.">
@@ -165,6 +167,7 @@
 <footer>
 	<a href="{%url 'app.login'%}">Home</a>
 	<a href="{%url 'app.signup'%}">Signup</a>
+	<a href="http://www.github.com/almaginetx/AlmaginetxPlay">Developers</a>
 </footer>
 <style type="text/css">
 	footer{padding: 20px;background:#0f0f0f;}

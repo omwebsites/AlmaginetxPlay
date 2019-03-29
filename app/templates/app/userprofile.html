@@ -10,7 +10,7 @@
 
 <!-- ////////////////////////////////// app-homeNav-->
 <nav class="app-homeNav">
-	<img src="/static/img/avatar.png">s
+	<a href="{%url 'app.welcome'%}"><img src="/static/img/avatar.png"></a>
 </nav>
 <style type="text/css">
 	nav{position:fixed;width:60px;top:0;left:0;z-index:10;padding:10px;}
@@ -63,7 +63,10 @@
 	{%for track in track%}
 	{%if track.user.userprofile.id == userprofile.id%}
 	<article>
-		<a href=""><img src="/static/img/avatar.png" alt="Listen Audio"></a>
+		<a >{%if track.user.userprofile.avatar%}
+			<img src="/media/{{track.user.userprofile.avatar}}" alt="User: {{track.user.userprofile.nickname}}.">
+			{%else%}
+			<img src="/static/img/avatar.png" alt="User: {{track.user.userprofile.nickname}}.">{%endif%}</a>
 		<p><strong>{{track.user.userprofile.nickname}}:</strong> "{{track.title}}" <span> {{track.create_at|timesince}} ago</span></p>
 		<a href="{% url 'app.track' track.slug%}"><button></button></a>
 	</article>

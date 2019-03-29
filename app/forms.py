@@ -49,5 +49,5 @@ class uploadtrack_form(forms.Form):
         label='Audio')
 
 class updateavatar_form(forms.Form):
-    audio = forms.FileField(
+    avatar = forms.FileField(
         label='Picture')
