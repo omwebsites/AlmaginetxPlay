@@ -106,6 +106,10 @@ def welcome_view(request):
     template = 'app/welcome.html'
     return render_to_response(template,locals(),context_instance=RequestContext(request))
 
+def us_view(request):
+    template = 'app/us.html'
+    return render_to_response(template,locals(),context_instance=RequestContext(request))
+
 def logout_view(request):
     logout(request)
     messages.success(request, 'Ingresa para continuar')

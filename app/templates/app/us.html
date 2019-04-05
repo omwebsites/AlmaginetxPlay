@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Luciferian Music</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/avatar.png">
+</head>
+<body>
+
+<!-- ////////////////////////////////// app-homeNav-->
+<nav class="app-homeNavs">
+	<img src="/static/img/avatar.png" alt="{{now|date:"l"}} {{now|date:"d"}} de {{now|date:"F"}} de {{now|date:"Y"}}. {{now|date:"P"}}">
+</nav>
+<style type="text/css">
+	nav{position:fixed;width:60px;top:0;left:0;z-index:10;padding:5px;}
+	nav img{display:block;width:50px;height:50px;background:#000;border-radius:50%;margin-bottom:10px;}
+</style>
+
+<!-- ////////////////////////////////// app-loginNav-->
+<div class="app-loginNav">
+	<h1>Luciferian Music</h1>
+	<aside>
+	<form>
+			<a href="{%url 'app.login'%}">Login</a>
+			<a href="{%url 'app.signup'%}">Signup</a>
+		</form>
+	</aside>
+</div>
+<style type="text/css">
+<style type="text/css">
+	*{margin: 0;padding: 0;text-decoration: none;list-style: none;font-family: 'Roboto', sans-serif;-webkit-transition: All 0.2s ease;-moz-transition: All 0.2s ease;-o-transition: All 0.2s ease;-ms-transition: All 0.2s ease;transition: All 0.2s ease;box-sizing:border-box;-o-box-sizing:border-box;-ms-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+	body{background:#000;padding-left:60px;}
+	section{background:#080808;display:inline-block;vertical-align:top;width:49%;}
+	body{padding-top: 68px;}
+	.app-loginNav{background:#000;position: fixed;top:0;left:0;z-index:9;width:100%;height:68px;padding:10px;padding-left: 60px;text-align:left;}
+	.app-loginNav p{color:#fff;display:inline-block;vertical-align: middle;}
+	.app-loginNav label{display:none;}
+	.app-loginNav input{width: 120px;height:30px;border:none;border-radius:30px;padding:5px;font-size:12px;margin:1px;}
+	.app-loginNav input:focus{width: 160px;}
+	.app-loginNav span{color:red;font-size:12px;}
+	.app-loginNav div{display:inline-block;vertical-align:middle;}
+	.app-loginNav h1{display:inline-block;vertical-align:middle;padding:14px;color:#d2d2d2;background:#000;font-size:16px;}
+	.app-loginNav aside{display:inline-block;vertical-align:middle;}
+	.app-loginNav button{background:#333;border:none;border-radius:30px;padding:10px 20px;color:#fff;text-align:center;margin-left:5px;font-size:12px;}
+	.app-loginNav a{color:gold;padding-left:10px;font-size:14px;}
+
+@media screen and (max-width:1000px){
+	body{padding-top:0;}
+	.app-loginNav{position:relative;height:auto;padding-left:5px;}
+}
+</style>
+
+<!-- ////////////////////////////////// app-homeHeader-->
+
+<section class="app-header">
+	<header>
+	<br><br>
+	<section>
+	<h2>Welcome to The Luciferian Music Society. Become a member and enjoy exclusive audio.</h2>
+	<a href="{%url 'app.signup'%}">Create Account</a>
+	</section>
+		<div>
+		<figure onclick="load()">
+			<img src="/static/img/avatar.png" alt="Explore Last Music">
+		</figure>
+		</div>
+	</header>
+</section>
+<style type="text/css">
+	.app-header{width:100%;}
+		.app-header header{position:relative;background:url(/static/img/applogin.jpg)no-repeat top right;background-size:cover;background-attachment:fixed;margin-bottom:130px;height:500px;text-align:center;}
+		.app-header div{height: 100%;display:block;width:220px;margin: 0 auto;}
+		.app-header figure{background:rgba(119,119,119,0.1);no-repeat center center;background-size:100%;height:220px;width:220px;border-radius:50%;position:absolute;bottom:-115px;padding-top:25px}
+		.app-header figure img{border-radius:50%;width:160px;height:160px;}
+		.app-header section {background:rgba(0,0,0,1);padding:20px;text-align: center;}
+		.app-header section h2{font-size:20px;text-align:center;color:#fff;padding:10px;background:#000;}
+		.app-header section a{display:block;padding:20px;padding-left:60px;background:#f6c434 url(/static/img/icon.png) no-repeat left 5px center;background-size:50px;color:#000;border-radius:5px;opacity:0.8;font-weight:bold;}
+</style>
+
+<!-- ////////////////////////////////// app-homeFooter-->
+<footer>
+	<a href="{%url 'app.login'%}">Home</a>
+	<a href="{%url 'app.signup'%}">Signup</a>
+	<a href="http://www.github.com/almaginetx/AlmaginetxPlay">Developers</a>
+</footer>
+<style type="text/css">
+	footer{padding: 20px;background:#0f0f0f;}
+	footer a{color:gold;padding:10px;display:block;font-size:12px;}
+	footer img{margin:0;auto;width:100px;height:100px;}
+</style>
+
+</body>
+</html>
