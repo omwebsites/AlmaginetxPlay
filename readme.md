@@ -7,5 +7,3 @@ This is the "AlmaginetxPlay documentation", a django 1.8.2 project very easy to 
 5. mkdir media & media chmod 777.
 6. makemigrations app & migrate.
 7. Enjoy! You are free to use it and please share.
-
-Project in Prod: www.luciferianmusic.com
